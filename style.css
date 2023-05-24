@@ -1,6 +1,248 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
 body {
+    line-height: 1;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #d1d1d1ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 100px;
+    font-family: 'Arvo', serif;
+}
+
+h1 {
+    margin: 20px;
+    font-size: 4rem;
+}
+
+section {
+    display: flex;
+    width: 400px;
+}
+
+#container {
+    background-color: #f6f6f6ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+#display {
+    width: 90%;
+    height: 125px;
+    background-color: #7e7564ff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 10px;
+}
+
+.eraseButtons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+}
+
+button {
+    border-radius: 8px;
+}
+
+#erase,
+#clear {
+    height: 60px;
+    width: 160px;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+#erase {
     background-color: #1b8c93ff;
-    --seasalt: #f6f6f6ff;
-    --timberwolf: #d1d1d1ff;
-    --puce: #c18e98ff;
-    --battleship-gray: #7e7564ff;
+}
+
+#erase:hover {
+    background-color: rgb(25, 127, 134);
+}
+
+#clear {
+    background-color: #c18e98ff;
+}
+
+#clear:hover {
+    background-color: rgb(173, 127, 137)
+}
+
+
+.calculatorButtons {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
+    width: 90%;
+    margin: 10px;
+}
+
+.calc,
+.calc-white {
+    background-color: #d1d1d1ff;
+    height: 80px;
+    width: 80px;
+    font-size: 1.5rem;
+    margin-top: 1px;
+    transition: ease-in;
+}
+
+.calc-white {
+    background-color: #f6f6f6ff;
+}
+
+.calc:hover {
+    background-color: #c0c0c0;
+}
+
+.calc-white:hover {
+    background-color: #e7e7e7;
+}
