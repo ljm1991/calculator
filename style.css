@@ -20,7 +20,7 @@ h1 {
 }
 
 p {
-    margin: 10px;
+    margin: 15px;
     font-size: 3rem;
 }
 
@@ -99,7 +99,8 @@ button {
 }
 
 .calc,
-.calc-white {
+.operator,
+.equal {
     background-color: #d1d1d1ff;
     height: 80px;
     width: 80px;
@@ -108,7 +109,8 @@ button {
     transition: ease-in;
 }
 
-.calc-white {
+.operator,
+.equal {
     background-color: #f6f6f6ff;
 }
 
@@ -116,6 +118,7 @@ button {
     background-color: #c0c0c0;
 }
 
-.calc-white:hover {
+.operator:hover,
+.equal:hover {
     background-color: #e7e7e7;
 }

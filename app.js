@@ -1,35 +1,44 @@
-let firstNumber
+
+
+
 let operand
 let secondNumber
+let firstNumber
 
 
-const operate = function (firstNumber, secondNumber, operand) {
+
+
+
+const operate = function (operand, array) {
     if (operand === '+') {
-        add(firstNumber, secondNumber)
+        return firstNumber = add(array)
     } else if (operand === '-') {
-        subtract(firstNumber, secondNumber)
-    } else if (operand === '*') {
-        multiply([numbers])
+        return firstNumber = subtract(array)
+    } else if (operand === 'x') {
+        return firstNumber = multiply(array)
     } else if (operand === '/') {
-        divide(firstNumber, SecondNumber)
+        return firstNumber = divide(array)
     }
 }
 
-const add = function (a, b) {
-    return a + b
-};
+const add = function (array) {
+    const total = array.reduce((total, number) => total + number)
+    return total
+}
 
-const subtract = function (a, b) {
-    return a - b
-};
-
-
-const multiply = function (array) {
-    return total * number
-};
-
-const divide = function (a, b) {
-    return a / b
+const subtract = function (array) {
+    const total = array.reduce((total, number) => total - number)
+    return total
 }
 
 
+const multiply = function (array) {
+    const total = array.reduce((total, number) => total * number)
+    return total
+};
+
+
+const divide = function (array) {
+    const total = array.reduce((total, number) => total / number)
+    return total
+}
