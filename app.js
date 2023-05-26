@@ -1,12 +1,6 @@
-
-
-
 let operand
 let secondNumber
 let firstNumber
-
-
-
 
 
 const operate = function (operand, array) {
