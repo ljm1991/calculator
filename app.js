@@ -2,21 +2,32 @@ const digit = document.querySelectorAll(".calc")
 const operator = document.querySelectorAll(".operator")
 
 
+operandSelected = false
+let firstNumber
 let operand
 let secondNumber
-let firstNumber
+let array = []
 
 digit.forEach((digit) => {
     digit.addEventListener('click', function () {
-        console.log('clicked')
+        if (!operandSelected) {
+            firstNumber = parseInt(digit.textContent)
+            array.push(firstNumber)
+        } else {
+            secondNumber = parseInt(digit.textContent)
+            array.push(secondNumber)
+            operate(operand, array)
+        }
     })
 })
 
 operator.forEach((operator) => {
     operator.addEventListener('click', function () {
-        console.log('clicked')
+        operandSelected = true
+        operand = operator.textContent
     })
 })
+
 
 const operate = function (operand, array) {
     if (operand === '+') {
