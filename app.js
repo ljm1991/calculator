@@ -1,7 +1,22 @@
+const digit = document.querySelectorAll(".calc")
+const operator = document.querySelectorAll(".operator")
+
+
 let operand
 let secondNumber
 let firstNumber
 
+digit.forEach((digit) => {
+    digit.addEventListener('click', function () {
+        console.log('clicked')
+    })
+})
+
+operator.forEach((operator) => {
+    operator.addEventListener('click', function () {
+        console.log('clicked')
+    })
+})
 
 const operate = function (operand, array) {
     if (operand === '+') {
