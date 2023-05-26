@@ -1,5 +1,6 @@
 const digit = document.querySelectorAll(".calc")
 const operator = document.querySelectorAll(".operator")
+const equal = document.querySelector("#equal")
 
 
 operandSelected = false
@@ -62,3 +63,10 @@ const divide = function (array) {
     const total = array.reduce((total, number) => total / number)
     return total
 }
+
+equal.addEventListener('click', function () {
+    if (!firstNumber == "") {
+        array = [];
+        array.push(firstNumber)
+    }
+})
