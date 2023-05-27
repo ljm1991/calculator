@@ -10,17 +10,20 @@ const decimal = document.querySelector("#decimal")
 const erase = document.querySelector("#erase")
 
 operandSelected = false
+num1Selected = false
 let firstNumber
 let operand
 let secondNumber
 let array = []
+
 
 digit.forEach((digit) => {
     digit.addEventListener('click', function () {
         if (!operandSelected) {
             num1.textContent += (digit.textContent)
             firstNumber = parseFloat(num1.textContent)
-            console.log(firstNumber)
+            console.log()
+            num1Selected = true;
         } else {
             num2.textContent += (digit.textContent)
             secondNumber = parseFloat(num2.textContent)
@@ -30,10 +33,12 @@ digit.forEach((digit) => {
 
 operator.forEach((operator) => {
     operator.addEventListener('click', function () {
-        operandSelected = true
-        operand = operator.textContent
-        op.textContent = operator.textContent
-        decimal.disabled = false
+        if (num1Selected === true) {
+            operandSelected = true
+            operand = operator.textContent
+            op.textContent = operator.textContent
+            decimal.disabled = false
+        }
     })
 })
 
@@ -79,6 +84,7 @@ clear.addEventListener('click', function () {
     array = []
     operandSelected = false
     decimal.disabled = false
+    num1Selected = false
 })
 
 equal.addEventListener('click', function () {
@@ -87,10 +93,10 @@ equal.addEventListener('click', function () {
         array.push(secondNumber)
         operate(operand, array)
         array = [];
-        num1.textContent = `${firstNumber}`
         num2.textContent = ''
         op.textContent = ''
         decimal.disabled = false
+        exponents(firstNumber, num1)
     }
 })
 
@@ -109,3 +115,15 @@ const poof = function (element) {
     string = string.substring(0, string.length - 1)
     element.textContent = string
 }
+
+const exponents = function (variable, element) {
+    const string = variable.toString()
+    if (string.length < 9) {
+        element.textContent = `${variable}`
+    }
+    else {
+        exponent = variable.toExponential(2);
+        element.textContent = `${exponent}`
+    }
+}
+
