@@ -8,13 +8,16 @@ const num2 = document.querySelector("#num2")
 const op = document.querySelector("#op")
 const decimal = document.querySelector("#decimal")
 const erase = document.querySelector("#erase")
-
 operandSelected = false
 num1Selected = false
 let firstNumber
 let operand
 let secondNumber
 let array = []
+
+clear.addEventListener('click', clearAll)
+
+
 
 
 digit.forEach((digit) => {
@@ -25,12 +28,7 @@ digit.forEach((digit) => {
                 num1.textContent += (digit.textContent)
                 firstNumber = parseFloat(num1.textContent)
             } else {
-                num1.textContent = ''
-                num2.textContent = ''
-                op.textContent = ''
-                array = []
-                operandSelected = false
-                decimal.disabled = false
+                clearAll()
             }
         }
         else {
@@ -88,17 +86,6 @@ const divide = function (array) {
     return Math.round(total * 10) / 10
 }
 
-clear.addEventListener('click', function () {
-    num1.textContent = ''
-    num2.textContent = ''
-    op.textContent = ''
-    array = []
-    operandSelected = false
-    decimal.disabled = false
-    num1Selected = false
-    console.log(num1Selected)
-})
-
 equal.addEventListener('click', function () {
     if (!firstNumber == "") {
         array.push(firstNumber)
@@ -140,5 +127,15 @@ const exponents = function (variable, element) {
     }
 }
 
+function clearAll() {
+    num1.textContent = ''
+    num2.textContent = ''
+    op.textContent = ''
+    array = []
+    operandSelected = false
+    decimal.disabled = false
+    num1Selected = false
+    console.log(num1Selected)
+}
 
 
