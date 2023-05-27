@@ -49,24 +49,24 @@ const operate = function (operand, array) {
 
 const add = function (array) {
     const total = array.reduce((total, number) => total + number)
-    return total
+    return Math.round(total * 10) / 10
 }
 
 const subtract = function (array) {
     const total = array.reduce((total, number) => total - number)
-    return total
+    return Math.round(total * 10) / 10
 }
 
 
 const multiply = function (array) {
     const total = array.reduce((total, number) => total * number)
-    return total
+    return Math.round(total * 10) / 10
 };
 
 
 const divide = function (array) {
     const total = array.reduce((total, number) => total / number)
-    return total
+    return Math.round(total * 10) / 10
 }
 
 clear.addEventListener('click', function () {
