@@ -3,6 +3,9 @@ const operator = document.querySelectorAll(".operator")
 const clear = document.querySelector("#clear")
 const equal = document.querySelector("#equal")
 const display = document.querySelector("p")
+const num1 = document.querySelector("#num1")
+const num2 = document.querySelector("#num2")
+const op = document.querySelector("#op")
 
 operandSelected = false
 let firstNumber
@@ -13,14 +16,12 @@ let array = []
 digit.forEach((digit) => {
     digit.addEventListener('click', function () {
         if (!operandSelected) {
-            firstNumber = parseInt(digit.textContent)
-            array.push(firstNumber)
-            display.textContent = `${firstNumber}`
+            num1.textContent += (digit.textContent)
+            firstNumber = parseInt(num1.textContent)
+            console.log(firstNumber)
         } else {
-            secondNumber = parseInt(digit.textContent)
-            array.push(secondNumber)
-            display.innerText = `${firstNumber} ${operand} ${secondNumber}`
-            operate(operand, array)
+            num2.textContent += (digit.textContent)
+            secondNumber = parseInt(num2.textContent)
         }
     })
 })
@@ -28,8 +29,8 @@ digit.forEach((digit) => {
 operator.forEach((operator) => {
     operator.addEventListener('click', function () {
         operandSelected = true
-        operand = operator.textContent
-        display.textContent = `${firstNumber} ${operand}`
+        operand = operator.textContent;
+        op.textContent = operator.textContent
     })
 })
 
@@ -69,17 +70,21 @@ const divide = function (array) {
 }
 
 clear.addEventListener('click', function () {
-    firstNumber = ''
-    secondNumber = ''
+    num1.textContent = ''
+    num2.textContent = ''
+    op.textContent = ''
     array = []
-    display.innerText = ""
     operandSelected = false
 })
 
 equal.addEventListener('click', function () {
     if (!firstNumber == "") {
-        display.textContent = `${firstNumber}`
-        array = [];
         array.push(firstNumber)
+        array.push(secondNumber)
+        operate(operand, array)
+        array = [];
+        num1.textContent = `${firstNumber}`
+        num2.textContent = ''
+        op.textContent = ''
     }
 })
