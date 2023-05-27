@@ -17,11 +17,11 @@ digit.forEach((digit) => {
     digit.addEventListener('click', function () {
         if (!operandSelected) {
             num1.textContent += (digit.textContent)
-            firstNumber = parseInt(num1.textContent)
+            firstNumber = parseFloat(num1.textContent)
             console.log(firstNumber)
         } else {
             num2.textContent += (digit.textContent)
-            secondNumber = parseInt(num2.textContent)
+            secondNumber = parseFloat(num2.textContent)
         }
     })
 })
