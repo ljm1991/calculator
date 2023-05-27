@@ -7,6 +7,7 @@ const num1 = document.querySelector("#num1")
 const num2 = document.querySelector("#num2")
 const op = document.querySelector("#op")
 const decimal = document.querySelector("#decimal")
+const erase = document.querySelector("#erase")
 
 operandSelected = false
 let firstNumber
@@ -96,3 +97,15 @@ equal.addEventListener('click', function () {
 decimal.addEventListener('click', function () {
     decimal.disabled = true;
 })
+
+erase.addEventListener('click', function () {
+    if (!operandSelected) {
+        poof(num1)
+    } poof(num2)
+})
+
+const poof = function (element) {
+    let string = element.textContent.trimEnd()
+    string = string.substring(0, string.length - 1)
+    element.textContent = string
+}
