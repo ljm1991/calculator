@@ -19,25 +19,36 @@ let array = []
 
 digit.forEach((digit) => {
     digit.addEventListener('click', function () {
+        console.log(num1Selected)
         if (!operandSelected) {
-            num1.textContent += (digit.textContent)
-            firstNumber = parseFloat(num1.textContent)
-            console.log()
-            num1Selected = true;
-        } else {
+            if (!num1Selected) {
+                num1.textContent += (digit.textContent)
+                firstNumber = parseFloat(num1.textContent)
+            } else {
+                num1.textContent = ''
+                num2.textContent = ''
+                op.textContent = ''
+                array = []
+                operandSelected = false
+                decimal.disabled = false
+            }
+        }
+        else {
             num2.textContent += (digit.textContent)
             secondNumber = parseFloat(num2.textContent)
         }
     })
 })
 
+
 operator.forEach((operator) => {
     operator.addEventListener('click', function () {
-        if (num1Selected === true) {
+        if (!num1.textContent == "") {
             operandSelected = true
             operand = operator.textContent
             op.textContent = operator.textContent
             decimal.disabled = false
+            num1Selected = true
         }
     })
 })
@@ -85,6 +96,7 @@ clear.addEventListener('click', function () {
     operandSelected = false
     decimal.disabled = false
     num1Selected = false
+    console.log(num1Selected)
 })
 
 equal.addEventListener('click', function () {
@@ -97,6 +109,7 @@ equal.addEventListener('click', function () {
         op.textContent = ''
         decimal.disabled = false
         exponents(firstNumber, num1)
+        operandSelected = !operandSelected
     }
 })
 
@@ -126,4 +139,6 @@ const exponents = function (variable, element) {
         element.textContent = `${exponent}`
     }
 }
+
+
 
