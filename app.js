@@ -6,6 +6,7 @@ const display = document.querySelector("p")
 const num1 = document.querySelector("#num1")
 const num2 = document.querySelector("#num2")
 const op = document.querySelector("#op")
+const decimal = document.querySelector("#decimal")
 
 operandSelected = false
 let firstNumber
@@ -29,8 +30,9 @@ digit.forEach((digit) => {
 operator.forEach((operator) => {
     operator.addEventListener('click', function () {
         operandSelected = true
-        operand = operator.textContent;
+        operand = operator.textContent
         op.textContent = operator.textContent
+        decimal.disabled = false
     })
 })
 
@@ -75,6 +77,7 @@ clear.addEventListener('click', function () {
     op.textContent = ''
     array = []
     operandSelected = false
+    decimal.disabled = false
 })
 
 equal.addEventListener('click', function () {
@@ -86,5 +89,10 @@ equal.addEventListener('click', function () {
         num1.textContent = `${firstNumber}`
         num2.textContent = ''
         op.textContent = ''
+        decimal.disabled = false
     }
+})
+
+decimal.addEventListener('click', function () {
+    decimal.disabled = true;
 })
