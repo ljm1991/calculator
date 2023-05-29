@@ -1,6 +1,8 @@
 * {
     box-sizing: border-box;
     font-family: 'Arvo', serif;
+    color: black;
+    border: 1px solid black;
 }
 
 body {
