@@ -17,7 +17,7 @@ let array = []
 
 clear.addEventListener('click', clearAll)
 
-document.addEventListener('keyup', function (e) {
+document.addEventListener('keydown', function (e) {
     if (e.key >= 0 && e.key <= 9 || e.key === ".") {
         if (!operandSelected) {
             if (!num1Selected) {
