@@ -17,16 +17,40 @@ let array = []
 
 clear.addEventListener('click', clearAll)
 
-
+document.addEventListener('keyup', function (e) {
+    if (e.key >= 0 && e.key <= 9 || e.key === ".") {
+        if (!operandSelected) {
+            if (!num1Selected) {
+                {
+                    num1.textContent += `${e.key}`
+                    firstNumber = parseFloat(num1.textContent)
+                }
+            } else {
+                clearAll()
+            }
+        } else {
+            num2.textContent += `${e.key}`
+            secondNumber = parseFloat(num2.textContent)
+        }
+    } else if (e.key === "Backspace") {
+        clearAll()
+    } else if (e.key == "x" || e.key == "/" || e.key == "+" || e.key == "-") {
+        if (!num1.textContent == "") {
+            getOperator(e.key)
+        }
+    } else if (e.key === "Enter") {
+        answer()
+    }
+})
 
 
 digit.forEach((digit) => {
-    digit.addEventListener('click', function () {
-        console.log(num1Selected)
+    digit.addEventListener('mouseup', function () {
         if (!operandSelected) {
             if (!num1Selected) {
                 num1.textContent += (digit.textContent)
                 firstNumber = parseFloat(num1.textContent)
+                console.log(firstNumber)
             } else {
                 clearAll()
             }
@@ -34,25 +58,21 @@ digit.forEach((digit) => {
         else {
             num2.textContent += (digit.textContent)
             secondNumber = parseFloat(num2.textContent)
+            console.log(secondNumber)
         }
     })
 })
 
 
 operator.forEach((operator) => {
-    operator.addEventListener('click', function () {
-        if (!num1.textContent == "") {
-            operandSelected = true
-            operand = operator.textContent
-            op.textContent = operator.textContent
-            decimal.disabled = false
-            num1Selected = true
-        }
+    operator.addEventListener('mouseup', function () {
+        getOperator(operator.textContent)
     })
 })
 
 
-const operate = function (operand, array) {
+function operate(operand, array) {
+    console.log(operand, array)
     if (operand === '+') {
         return firstNumber = add(array)
     } else if (operand === '-') {
@@ -86,19 +106,8 @@ const divide = function (array) {
     return Math.round(total * 10) / 10
 }
 
-equal.addEventListener('click', function () {
-    if (!firstNumber == "") {
-        array.push(firstNumber)
-        array.push(secondNumber)
-        operate(operand, array)
-        array = [];
-        num2.textContent = ''
-        op.textContent = ''
-        decimal.disabled = false
-        exponents(firstNumber, num1)
-        operandSelected = !operandSelected
-    }
-})
+equal.addEventListener('click', answer)
+
 
 decimal.addEventListener('click', function () {
     decimal.disabled = true;
@@ -110,13 +119,13 @@ erase.addEventListener('click', function () {
     } poof(num2)
 })
 
-const poof = function (element) {
+function poof(element) {
     let string = element.textContent.trimEnd()
     string = string.substring(0, string.length - 1)
     element.textContent = string
 }
 
-const exponents = function (variable, element) {
+function exponents(variable, element) {
     const string = variable.toString()
     if (string.length < 9) {
         element.textContent = `${variable}`
@@ -124,6 +133,17 @@ const exponents = function (variable, element) {
     else {
         exponent = variable.toExponential(2);
         element.textContent = `${exponent}`
+    }
+}
+
+
+function getOperator(data) {
+    if (!num1.textContent == "") {
+        operandSelected = true
+        operand = data
+        op.textContent = data
+        decimal.disabled = false
+        num1Selected = true
     }
 }
 
@@ -136,6 +156,22 @@ function clearAll() {
     decimal.disabled = false
     num1Selected = false
     console.log(num1Selected)
+    operand = ''
+}
+
+function answer() {
+    if (!firstNumber == "") {
+        array.push(firstNumber)
+        array.push(secondNumber)
+        operate(operand, array)
+        array = [];
+        num2.textContent = ''
+        op.textContent = ''
+        decimal.disabled = false
+        exponents(firstNumber, num1)
+        operandSelected = !operandSelected
+        operand = ''
+    }
 }
 
 
